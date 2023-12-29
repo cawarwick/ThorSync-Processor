@@ -1,12 +1,3 @@
-import Utility_working as Utility #custom-made utility file, contains lengthy functions
-import numpy as np
-import sys
-import os
-from constant import *
-import h5py
-import csv
-from scipy.signal import resample
-
 import h5py
 import csv
 import os
@@ -22,7 +13,7 @@ def downsample(data, original_fs, target_fs):
     
     return downsampled_data
 
-def save_selected_datasets_to_csv(file_path, target_fs=10.0):
+def save_selected_datasets_to_csv(file_path, target_fs=10.0): ##change this to be your desired frame rate. The list of selected datasets will need to match Thorsync exactly.
     selected_datasets = [
         "AI/E_Stim",
         "AI/M_Force",
@@ -85,5 +76,3 @@ def process_directory(directory_path):
 if __name__ == "__main__":
     directory_path = "Y:/DRGS project/#505 12-18-23/SDH Recording/Final FOV/Functional/ThorSync/Test/"  # Replace with the path to your directory containing .h5 files
     process_directory(directory_path)
-
-    ##this saves each as a seperate csv
