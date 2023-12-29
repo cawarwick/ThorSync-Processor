@@ -1,13 +1,3 @@
-import Utility_working as Utility #custom-made utility file, contains lengthy functions
-import numpy as np
-import sys
-import os
-from constant import *
-import h5py
-import csv
-from scipy.signal import resample
-
-
 import h5py
 import csv
 import os
@@ -23,7 +13,7 @@ def downsample(data, original_fs, target_fs):
     
     return downsampled_data
 
-def save_selected_datasets_to_csv(file_path, selected_datasets, target_fs=100.0):
+def save_selected_datasets_to_csv(file_path, selected_datasets, target_fs=10.0):  ##change this to be your desired frame rate. The list of selected datasets will need to match Thorsync exactly.
     try:
         base_name = os.path.splitext(os.path.basename(file_path))[0]
 
