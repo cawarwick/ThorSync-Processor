@@ -45,3 +45,7 @@ It works as follows:
 6. and then saves the times and forces of each peak derivated to a bunch of csvs
 
 It should output 4 values per stimulation, e.g. touch down, force on, force off, and liftoff. 
+
+# Frame out
+Instead of finding the time of each event we can use the frame counter in the thorsync file to instead output the frame at which things happened. 
+When used in combination, TS_FrameOut.py (which outputs the force data and the frames) and find_peaks_frames.py (which finds the responses), it should report the frames at which there are changes in force which 'should' provide a better alignment of stimuli to the calcium data.
