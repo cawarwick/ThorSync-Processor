@@ -27,3 +27,14 @@ This filters the data to remove the time points that are recorded before and aft
 So far if you're downsampling to 10hz a value of 0.5 leaves an extra data point at the start and the end of each file, and so a value of 0.9 seems to be better. Other downsample rates have yet to be tested.
 
 
+# Find_Peaks
+This script works quite a bit differently than the other so it's an entirely different script.
+It takes the same input as the Timestamp.py file (I'd suggest 1000hz sampling rate for mechanical stimulator) as a CSV with 2 rows, one is time the other is the force. You pass it an entire directory of CSVs.
+![image](https://github.com/cawarwick/ThorSync-Processor/assets/81972652/fbdb1c08-49a1-44f0-9a30-d7fd93b2bdb2)
+
+It works as follows:
+1. Smoothes the force traces and creates a derivative of it.
+2. Finds values above or below a threshold and then locates the peak of that and notes that as an event (which I emperically set to ~2, 1-3 ish, but it may change with different frame rates or stimualtions) 
+3. Saves the force applied 0.25s after the peak of the derivative (this is because the derivative finds the peak during the step rather than during the steady state)
+4. It then scales the voltage to force (which needs to be emperically calibrated)
+5. and then saves the times and forces of each peak derivated to a bunch of csvs
